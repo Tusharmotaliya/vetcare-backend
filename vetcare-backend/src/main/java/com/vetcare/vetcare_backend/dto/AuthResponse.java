@@ -1,0 +1,13 @@
+package com.vetcare.vetcare_backend.dto;
+
+import lombok.Data;
+import lombok.AllArgsConstructor;
+
+@Data
+@AllArgsConstructor
+public class AuthResponse {
+    private String token;
+    private Long clinicId;
+    private String clinicName;
+    private String message;
+}
