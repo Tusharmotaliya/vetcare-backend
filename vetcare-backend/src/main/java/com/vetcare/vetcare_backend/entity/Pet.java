@@ -1,5 +1,6 @@
 package com.vetcare.vetcare_backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDate;
@@ -19,8 +20,9 @@ public class Pet {
     // This links each pet to their owner
     // @ManyToOne = many pets can belong to one owner
     // @JoinColumn = the foreign key column in the pets table
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner_id", nullable = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private PetOwner owner;
 
     @Column(nullable = false)
