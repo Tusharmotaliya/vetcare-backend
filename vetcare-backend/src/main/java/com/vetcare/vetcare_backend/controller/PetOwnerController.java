@@ -36,4 +36,11 @@ public class PetOwnerController {
                 .map(owner -> ResponseEntity.ok(owner))
                 .orElse(ResponseEntity.notFound().build());
     }
+    
+    @GetMapping("/clinic/{clinicId}")
+    public ResponseEntity<List<PetOwner>> getOwnersByClinic(
+            @PathVariable Long clinicId) {
+        List<PetOwner> owners = petOwnerService.getOwnersByClinic(clinicId);
+        return ResponseEntity.ok(owners);
+    }
 }
